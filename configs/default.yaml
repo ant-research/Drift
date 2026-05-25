@@ -1,0 +1,82 @@
+experiment:
+  project: "experiment/my_experiment"
+  deepspeed_file: "dp_zero3"
+
+model:
+  model_type: "dream"   # Options: "llada", "dream"
+  pretrained_model: "/path/to/model"
+
+training:
+  seed: 2026
+  enable_tf32: true
+  mixed_precision: "bf16"
+  model_dtype: "bf16"
+  batch_size_lm: 4
+  num_train_epochs: 64
+  num_iterations: 1   # 1 = GRPO/REINFORCE; >1 = PPO-clip
+  epsilon_low: 0.2
+  epsilon_high: 0.2
+  beta: 0.01
+  kl_type: "k3"
+  entropy_coeff: 0.0
+  loss_norm: "sample"   # Options: "sample", "token"
+  mask_strategy: "sequential_masking"   # Options: "sequential_masking", "random_masking", "coupled_random_masking", "all_masking"
+  sample_temperature: 1
+  mask_num: 4
+  logps_mask_ratio: 0.3 # Only used for "random_masking"
+  low_prob_threshold: 0.6
+  reward_funcs: ["math"]
+
+dataset:
+  train_dataset: "MATH_train"
+  data_type: "math"
+
+rollout:
+  batch_size: 8
+  num_generations: 4
+  temperature: 1.0
+  steps: 256
+  max_gen_length: 256
+  block_size: 32
+  top_p: 0.95     # dream only
+  top_k: null     # dream only
+  remasking_strategy: "low_confidence_dynamic"
+  target: "confidence"    # Options: "confidence", "entropy"
+  dynamic_threshold: 0.9
+  use_cache: true
+  further_horizon: 128
+  alg_temp: null  # dream only
+
+optimizer:
+  name: "adamw"
+  params:
+    learning_rate: 1.0e-6
+    beta1: 0.9
+    beta2: 0.999
+    weight_decay: 0.01
+    epsilon: 1.0e-8
+
+lr_scheduler:
+  scheduler: "constant"
+  params:
+    warmup_steps: 0
+    min_lr_scale: 1.0
+
+evaluation:
+  eval_dataset: "MATH500"   # Accepts a single string or a list for multi-dataset evaluation
+  data_type: "math"
+  temperature: 0
+  steps: 256
+  max_gen_length: 256
+  batch_size: 4
+  block_size: 32
+  remasking_strategy: ["low_confidence_dynamic"]
+  target: "confidence"
+  dynamic_threshold: 0.9
+  use_cache: true
+  further_horizon: 128
+  eval_every_steps: 5
+  eval_at_start: true
+  save_after_eval: true
+  top_k_checkpoints: 1
+  top_k_metric: "eval_accuracy"   # Options: "eval_accuracy", "eval_reward_mean"

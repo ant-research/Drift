@@ -1,0 +1,30 @@
+experiment:
+    project: "eval/dream_code"
+    deepspeed_file: "dp_zero3"
+
+model:
+    pretrained_model: [
+        "/path/to/dream-7b-instruct",
+        "/path/to/your/checkpoint",
+    ]
+    model_type: "dream"
+
+training:
+    reward_funcs: ["code"]
+    mixed_precision: "bf16"
+    enable_tf32: True
+    seed: 2026
+
+evaluation:
+    eval_dataset: ["HumanEval", "MBPP"]
+    data_type: ["code_function", "code_function"]
+    temperature: 0
+    steps: [128, 256, 512]
+    max_gen_length: [128, 256, 512]
+    batch_size: 4
+    remasking_strategy: ["low_confidence_dynamic"]
+    target: "confidence"
+    dynamic_threshold: 0.9
+    block_size: 32
+    further_horizon: 128
+    use_cache: True

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.log
+*.swp
+*.swo
+.DS_Store
+.ipynb_checkpoints/
+log/
