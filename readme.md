@@ -15,7 +15,7 @@ Drift is an easy-to-use and extensible reinforcement learning framework for diff
 
 ```bash
 conda create --name drift python=3.10
-source activate drift
+conda activate drift
 
 pip install torch==2.6.0
 pip install deepspeed==0.18.4
