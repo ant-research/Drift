@@ -1,4 +1,4 @@
-# Drift: <u>d</u>LLM <u>R</u>e<u>i</u>n<u>f</u>orcement Learning <u>T</u>raining Framework <br>
+# Drift: <u>D</u>LM <u>R</u>e<u>i</u>n<u>f</u>orcement Learning <u>T</u>raining Framework <br>
 Drift is an easy-to-use and extensible reinforcement learning framework for diffusion language models.
 <p align="center">
   <img src="assets/logo.png" alt="Drift Overview" width="800"/>
