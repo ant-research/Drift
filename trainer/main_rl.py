@@ -25,8 +25,8 @@ from torch.utils.data import Dataset, DataLoader
 from tqdm.auto import tqdm
 
 from reward.rl_reward import compute_reward_per_func
-from rollout.dream_rl_rollout import dream_rollout
-from rollout.llada_rl_rollout import llada_rollout, RolloutOutput
+from rollout.dream_rollout import dream_rollout
+from rollout.llada_rollout import llada_rollout, RolloutOutput
 from trainer.logging_utils import log_step_to_jsonl, GREEN, YELLOW, MAGENTA, CYAN, RESET
 from trainer.lr_schedulers import get_scheduler
 from trainer.masking_strategy import MaskingSchedule, build_masking_schedule

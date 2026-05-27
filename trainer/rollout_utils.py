@@ -6,7 +6,7 @@ import torch.distributed as dist
 from accelerate.logging import get_logger
 
 from reward.rl_reward import compute_reward_per_func
-from rollout.llada_rl_rollout import RolloutOutput
+from rollout.llada_rollout import RolloutOutput
 from trainer.logging_utils import CYAN, RESET
 
 logger = get_logger(__name__, log_level="INFO")
