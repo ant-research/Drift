@@ -25,6 +25,7 @@ pip install -r requirements.txt
 ```
 
 ## Data Format
+**To help you get started quickly, math and code datasets are already provided in the `data/` directory.**
 
 Training data should be placed in the `data/` directory as JSON files. The framework supports **math** (`MATH500`, `GSM8K`), **code** (`MBPP`, `HumanEval`), and **planning** (`sudoku`, `countdown`) tasks, and is easily extensible to custom tasks.
 
