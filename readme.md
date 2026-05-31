@@ -100,3 +100,14 @@ Evaluation configs are located in `configs/eval/` and support passing multiple c
 ## Acknowledgement
 
 This framework builds upon [dLLM-RL](https://github.com/Wuyxin/dLLM-RL) and [fastdllm](https://github.com/zowaa/fastdllm), with its model foundations drawn from [Dream](https://github.com/HKUNLP/Dream) and [LLaDA](https://github.com/ML-GSAI/LLaDA). We gratefully acknowledge these teams for their valuable contributions to open-source research and development.
+
+## Citations
+
+```bibtex
+@article{he2026reinforcement,
+  title={Reinforcement Learning from Denoising Feedback},
+  author={He, Qi and Chen, Huan and Guo, Ya and Zhu, Huijia and Fung, Yi R and Zhou, Baojian},
+  journal={arXiv preprint arXiv:2605.25638},
+  year={2026}
+}
+```

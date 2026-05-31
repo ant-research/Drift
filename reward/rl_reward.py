@@ -123,7 +123,10 @@ def _safe_eval_arith(expr: str):
     if not re.fullmatch(r'[\d+\-*/().\s]+', expr):
         return None
     try:
-        return eval(expr, {"__builtins__": {}}, {})
+        result = eval(expr, {"__builtins__": {}}, {})
+        if not isinstance(result, (int, float)):
+            return None
+        return result
     except Exception:
         return None
 
